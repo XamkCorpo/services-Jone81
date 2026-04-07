@@ -1,4 +1,4 @@
-using ProductApi.Models;
+﻿using ProductApi.Models;
 using ProductApi.Models.Dtos;
 
 namespace ProductApi.Mappings;
@@ -18,7 +18,7 @@ public static class ProductMappings
         };
     }
 
-    public static Product ToEntity(this CreateProductRequest request)
+    public static Product ToEntity(this ProductRequest request)
     {
         return new Product
         {
