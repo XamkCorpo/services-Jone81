@@ -1,31 +1,36 @@
-using ProductApi.Models;
+﻿using ProductApi.Models;
 using ProductApi.Models.Dtos;
 
-namespace ProductApi.Mappings;
-
-public static class CategoryMappings
+namespace ProductApi.Mappings
 {
-    public static CategoryResponse ToResponse(this Category category)
+    public static class CategoryMappings
     {
-        return new CategoryResponse
+        // Muuttaa tietokanta-entiteetin palautettavaksi DTO:ksi
+        public static CategoryResponse ToResponse(this Category category)
         {
-            Id = category.Id,
-            Name = category.Name,
-            CreatedAt = category.CreatedAt,
-            UpdatedAt = category.UpdatedAt
-        };
-    }
+            return new CategoryResponse
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description
+            };
+        }
 
-    public static Category ToEntity(this CreateCategoryRequest request)
-    {
-        return new Category
+        // Muuttaa luontipyynnön tietokanta-entiteetiksi
+        public static Category ToEntity(this CategoryRequest request)
         {
-            Name = request.Name
-        };
-    }
+            return new Category
+            {
+                CategoryName = request.CategoryName,
+                Description = request.Description
+            };
+        }
 
-    public static void UpdateEntity(this UpdateCategoryRequest request, Category category)
-    {
-        category.Name = request.Name;
+        // Päivittää olemassa olevaa entiteettiä pyynnön tiedoilla
+        public static void UpdateEntity(this Category category, UpdateCategoryRequest request)
+        {
+            category.CategoryName = request.CategoryName;
+            category.Description = request.Description;
+        }
     }
 }

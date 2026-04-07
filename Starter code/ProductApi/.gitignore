@@ -14,9 +14,6 @@ obj/
 ## Rider
 .idea/
 
-## Visual Studio
-.vs/
-
 ## SQLite database
 *.db
 *.db-shm

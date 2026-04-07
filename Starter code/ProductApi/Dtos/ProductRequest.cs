@@ -1,6 +1,6 @@
-namespace ProductApi.Models.Dtos;
+﻿namespace ProductApi.Models.Dtos;
 
-public class UpdateProductRequest
+public class ProductRequest
 {
     public string Name { get; set; } = string.Empty;
     public decimal Price { get; set; }
